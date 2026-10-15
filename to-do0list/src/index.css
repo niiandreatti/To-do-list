@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'Inter', sans-serif;
+  color: #f4f4fc;
+  background: #0b0b12;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --purple: #8b5cf6;
+  --purple-light: #a78bfa;
+  --surface: #171722;
+  --text-muted: #9696ad;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 15% 10%, #31205255, transparent 40%),
+    radial-gradient(ellipse at 85% 90%, #1d3a6450, transparent 40%),
+    #0b0b12;
+}
+
+/* ===== Centralização ===== */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 70px 20px;
+}
+
+/* ===== Cartão principal ===== */
+.todo-card {
+  width: 100%;
+  max-width: 720px;
+  padding: 38px;
+  border: 1px solid #ffffff12;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #191925f5, #11111bf5);
+  box-shadow:
+    0 25px 80px #00000050,
+    inset 0 1px 0 #ffffff0a;
+  backdrop-filter: blur(20px);
+}
+
+.todo-card h1 {
+  margin: 0 0 32px;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.2;
+  background: linear-gradient(90deg, #ffffff, #b9a3ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ===== Formulário ===== */
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.todo-form input,
+.todo-form select {
+  width: 100%;
+  min-height: 52px;
+  padding: 15px 17px;
+  border: 1px solid #ffffff12;
+  border-radius: 13px;
+  outline: none;
+  background: #0e0e18;
+  color: #f4f4fc;
+  font: inherit;
+  font-size: 14px;
+  transition: border-color 0.25s, box-shadow 0.25s,
+    background 0.25s;
+}
+
+.todo-form input::placeholder {
+  color: #77778e;
+}
+
+.todo-form input:focus,
+.todo-form select:focus {
+  border-color: var(--purple);
+  background: #12101f;
+  box-shadow: 0 0 0 4px #8b5cf622;
+}
+
+.todo-form select {
+  cursor: pointer;
+}
+
+.todo-form button {
+  min-height: 52px;
+  margin-top: 4px;
+  border: none;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #8b5cf6, #6d45df);
+  color: white;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 24px #8b5cf630;
+  transition: transform 0.2s, box-shadow 0.2s,
+    filter 0.2s;
+}
+
+.todo-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px #8b5cf650;
+  filter: brightness(1.1);
+}
+
+.todo-form button:active {
+  transform: scale(0.98);
+}
+
+/* ===== Lista de tarefas ===== */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin: 30px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.empty-message {
+  margin: 0;
+  padding: 28px 18px;
+  border: 1px dashed #ffffff20;
+  border-radius: 16px;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* ===== Cartões individuais ===== */
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid #ffffff0d;
+  border-left: 3px solid var(--purple);
+  border-radius: 16px;
+  background: linear-gradient(120deg, #20202e, #171722);
+  box-shadow: 0 5px 15px #00000015;
+  animation: appear 0.3s ease both;
+  transition: transform 0.2s, border-color 0.2s,
+    background 0.2s;
+}
+
+.task-item:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(120deg, #252538, #1b1b29);
+  border-color: #ffffff20;
+}
+
+.task-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+
+.task-header strong {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Etiqueta de prioridade */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 5px 10px;
+  line-height: 1.4;
+  border-radius: 7px;
+}
+
+.task-subtitle {
+  margin: 8px 0 0;
+  color: #9999b0;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+
+.badge.low {
+  color: #4ade80;
+  background: #22c55e15;
+  border-color: #22c55e25;
+}
+
+.badge.medium {
+  color: #fbbf24;
+  background: #f59e0b15;
+  border-color: #f59e0b25;
+}
+
+.badge.high {
+  color: #fb7185;
+  background: #f43f5e15;
+  border-color: #f43f5e25;
+}
+
+/* ===== Cor lateral por prioridade ===== */
+.priority-low {
+  border-left-color: #22c55e;
+}
+
+.priority-medium {
+  border-left-color: #f59e0b;
+}
+
+.priority-high {
+  border-left-color: #f43f5e;
+}
+
+/* ===== Botão de excluir ===== */
+.delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  line-height: 1;
+  border-radius: 10px;
+}
+
+.delete-btn:hover {
+  background: #f43f5e25;
+  transform: scale(1.08);
+}
+
+/* ===== Animação de entrada ===== */
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Acessibilidade ===== */
+button:focus-visible {
+  outline: 2px solid var(--purple-light);
+  outline-offset: 3px;
+}
+
+/* ===== Celulares ===== */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 25px 14px;
+  }
+
+  .todo-card {
+    padding: 24px 18px;
+    border-radius: 22px;
+  }
+
+  .todo-card h1 {
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+  }
+
+  .task-item {
+    padding: 15px 12px;
+    gap: 10px;
+  }
+
+  .task-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .badge {
+    padding: 5px 8px;
+  }
+}
+
+/* Respeita quem prefere menos animações */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
